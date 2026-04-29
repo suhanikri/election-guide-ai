@@ -3,19 +3,19 @@ function askAI() {
     let reply = "";
 
     if (input.includes("register")) {
-        reply = "You can register as a voter on the official Election Commission website or through voter registration centers.";
+        reply = "🧾 You can register as a voter on the Election Commission website using Form 6.";
     }
     else if (input.includes("voter id")) {
-        reply = "You need a voter ID card. You can apply online or offline using Form 6.";
+        reply = "🪪 Apply for a voter ID online or offline. You can also download your e-EPIC.";
     }
     else if (input.includes("booth")) {
-        reply = "You can check your polling booth location online using your voter ID number.";
+        reply = "📍 Use your voter ID to check your polling booth location online.";
     }
     else if (input.includes("vote")) {
-        reply = "On election day, go to your polling booth with your voter ID and cast your vote securely.";
+        reply = "🗳️ Visit your polling booth on election day with valid ID and cast your vote.";
     }
     else {
-        reply = "Try asking about registration, voter ID, polling booth, or voting process.";
+        reply = "Try asking about voter registration, voter ID, or polling booth.";
     }
 
     document.getElementById("response").innerText = reply;
@@ -25,13 +25,13 @@ function quickHelp(type) {
     let reply = "";
 
     if (type === "first") {
-        reply = "As a first-time voter: Register → Get voter ID → Check booth → Go vote on election day.";
+        reply = "🎉 First-time voter? Register → Get voter ID → Find booth → Vote confidently!";
     }
     else if (type === "id") {
-        reply = "If you lost your voter ID, you can use alternative ID proofs or download your e-EPIC online.";
+        reply = "🔁 Lost your voter ID? Use alternative ID or download your e-EPIC online.";
     }
     else if (type === "booth") {
-        reply = "You can find your polling booth using your voter ID on official election portals.";
+        reply = "📍 Find your polling booth using official election portals or your voter ID.";
     }
 
     document.getElementById("response").innerText = reply;

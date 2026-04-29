@@ -8,32 +8,44 @@
 
 <body>
 
-    <h1>🗳️ Election Guide Assistant</h1>
+    <div class="container">
 
-    <h2>📌 Step-by-Step Election Process</h2>
+        <h1>🗳️ Election Guide AI</h1>
+        <p class="subtitle">Your smart companion for understanding the voting process</p>
 
-    <div class="steps">
-        <div class="step">1️⃣ Register as a voter</div>
-        <div class="step">2️⃣ Get your Voter ID</div>
-        <div class="step">3️⃣ Check your polling booth</div>
-        <div class="step">4️⃣ Go and vote on election day</div>
-        <div class="step">5️⃣ Results are counted</div>
+        <!-- Steps Section -->
+        <div class="card">
+            <h2>📌 Election Journey</h2>
+            <div class="steps">
+                <div class="step">🧾 Register as a voter</div>
+                <div class="step">🪪 Get your Voter ID</div>
+                <div class="step">📍 Find your polling booth</div>
+                <div class="step">🗳️ Cast your vote</div>
+                <div class="step">📊 Results & counting</div>
+            </div>
+        </div>
+
+        <!-- Quick Help -->
+        <div class="card">
+            <h2>⚡ Quick Help</h2>
+            <div class="quick-buttons">
+                <button onclick="quickHelp('first')">First Time Voter</button>
+                <button onclick="quickHelp('id')">Lost Voter ID</button>
+                <button onclick="quickHelp('booth')">Find Booth</button>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="card">
+            <h2>💬 Ask Anything</h2>
+            <div class="chat-box">
+                <input type="text" id="userInput" placeholder="Ask about elections...">
+                <button onclick="askAI()">Ask</button>
+            </div>
+            <div id="response" class="response"></div>
+        </div>
+
     </div>
-
-    <h2>⚡ Quick Help</h2>
-
-    <div class="quick-buttons">
-        <button onclick="quickHelp('first')">First Time Voter</button>
-        <button onclick="quickHelp('id')">Lost Voter ID</button>
-        <button onclick="quickHelp('booth')">Find Booth</button>
-    </div>
-
-    <h2>💬 Ask Your Question</h2>
-
-    <input type="text" id="userInput" placeholder="Ask about elections...">
-    <button onclick="askAI()">Ask</button>
-
-    <div id="response"></div>
 
     <script src="script.js"></script>
 </body>
