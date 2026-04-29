@@ -7,7 +7,28 @@
 </head>
 
 <body>
+
     <h1>🗳️ Election Guide Assistant</h1>
+
+    <h2>📌 Step-by-Step Election Process</h2>
+
+    <div class="steps">
+        <div class="step">1️⃣ Register as a voter</div>
+        <div class="step">2️⃣ Get your Voter ID</div>
+        <div class="step">3️⃣ Check your polling booth</div>
+        <div class="step">4️⃣ Go and vote on election day</div>
+        <div class="step">5️⃣ Results are counted</div>
+    </div>
+
+    <h2>⚡ Quick Help</h2>
+
+    <div class="quick-buttons">
+        <button onclick="quickHelp('first')">First Time Voter</button>
+        <button onclick="quickHelp('id')">Lost Voter ID</button>
+        <button onclick="quickHelp('booth')">Find Booth</button>
+    </div>
+
+    <h2>💬 Ask Your Question</h2>
 
     <input type="text" id="userInput" placeholder="Ask about elections...">
     <button onclick="askAI()">Ask</button>
