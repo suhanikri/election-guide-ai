@@ -11,38 +11,30 @@
     <div class="container">
 
         <h1>🗳️ Election Guide AI</h1>
-        <p class="subtitle">Your smart companion for understanding the voting process</p>
+        <p class="subtitle">Understand elections in the simplest way</p>
 
-        <!-- Steps Section -->
+        <!-- Steps -->
         <div class="card">
             <h2>📌 Election Journey</h2>
             <div class="steps">
-                <div class="step">🧾 Register as a voter</div>
-                <div class="step">🪪 Get your Voter ID</div>
-                <div class="step">📍 Find your polling booth</div>
-                <div class="step">🗳️ Cast your vote</div>
-                <div class="step">📊 Results & counting</div>
+                <div class="step">🧾 Register as voter</div>
+                <div class="step">🪪 Get voter ID</div>
+                <div class="step">📍 Find polling booth</div>
+                <div class="step">🗳️ Vote on election day</div>
+                <div class="step">📊 Results declared</div>
             </div>
         </div>
 
-        <!-- Quick Help -->
+        <!-- Chat UI -->
         <div class="card">
-            <h2>⚡ Quick Help</h2>
-            <div class="quick-buttons">
-                <button onclick="quickHelp('first')">First Time Voter</button>
-                <button onclick="quickHelp('id')">Lost Voter ID</button>
-                <button onclick="quickHelp('booth')">Find Booth</button>
-            </div>
-        </div>
+            <h2>💬 Ask Election AI</h2>
 
-        <!-- Chat Section -->
-        <div class="card">
-            <h2>💬 Ask Anything</h2>
-            <div class="chat-box">
-                <input type="text" id="userInput" placeholder="Ask about elections...">
-                <button onclick="askAI()">Ask</button>
+            <div id="chatBox" class="chat-box"></div>
+
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Ask anything...">
+                <button onclick="askAI()">Send</button>
             </div>
-            <div id="response" class="response"></div>
         </div>
 
     </div>
