@@ -11,28 +11,35 @@
     <div class="container">
 
         <h1>🗳️ Election Guide AI</h1>
-        <p class="subtitle">Understand elections in the simplest way</p>
+        <p class="subtitle">
+            Not sure how voting works? This AI guides you step-by-step — like a friend who’s done it before.
+        </p>
 
-        <!-- Steps -->
+        <button class="start-btn" onclick="startJourney()">✨ Start My Voting Journey</button>
+
+        <!-- Journey Section -->
+        <div id="journeyBox" class="card hidden">
+            <h2>📌 Your Voting Journey</h2>
+            <div id="journeySteps"></div>
+        </div>
+
+        <!-- Scenarios -->
         <div class="card">
-            <h2>📌 Election Journey</h2>
-            <div class="steps">
-                <div class="step">🧾 Register as voter</div>
-                <div class="step">🪪 Get voter ID</div>
-                <div class="step">📍 Find polling booth</div>
-                <div class="step">🗳️ Vote on election day</div>
-                <div class="step">📊 Results declared</div>
+            <h2>⚡ Common Situations</h2>
+            <div class="quick-buttons">
+                <button onclick="handleScenario('first')">First Time Voter</button>
+                <button onclick="handleScenario('lost')">Lost Voter ID</button>
+                <button onclick="handleScenario('booth')">Find Booth</button>
             </div>
         </div>
 
-        <!-- Chat UI -->
+        <!-- Chat -->
         <div class="card">
             <h2>💬 Ask Election AI</h2>
-
             <div id="chatBox" class="chat-box"></div>
 
             <div class="input-area">
-                <input type="text" id="userInput" placeholder="Ask anything...">
+                <input type="text" id="userInput" placeholder="Ask anything about elections...">
                 <button onclick="askAI()">Send</button>
             </div>
         </div>

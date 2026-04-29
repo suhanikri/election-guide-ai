@@ -1,4 +1,10 @@
-const API_KEY = "AIzaSyBsM3ECW7Mh5ixuRkcNy6ZOn4IuCQFcl2o";
+const steps = [
+    "🧾 Step 1: Register as a voter on the official portal.",
+    "🪪 Step 2: Apply and receive your voter ID.",
+    "📍 Step 3: Check your polling booth location.",
+    "🗳️ Step 4: Visit the booth and cast your vote.",
+    "📊 Step 5: Votes are counted and results declared."
+];
 
 function addMessage(text, sender) {
     const chatBox = document.getElementById("chatBox");
@@ -11,50 +17,67 @@ function addMessage(text, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-async function askAI() {
-    const inputField = document.getElementById("userInput");
-    const userText = inputField.value;
+window.onload = function () {
+    addMessage("👋 Hi! I’ll help you understand the election process step-by-step.", "bot");
+};
 
-    if (!userText) return;
+function startJourney() {
+    const box = document.getElementById("journeyBox");
+    const container = document.getElementById("journeySteps");
 
-    addMessage(userText, "user");
-    inputField.value = "";
+    box.classList.remove("hidden");
+    container.innerHTML = "";
 
-    // Typing animation
-    addMessage("Typing...", "bot");
+    steps.forEach((step, index) => {
+        setTimeout(() => {
+            const div = document.createElement("div");
+            div.className = "step";
+            div.innerText = step;
+            container.appendChild(div);
+        }, index * 700);
+    });
 
-    try {
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [
-                                {
-                                    text: `Explain this in simple election context: ${userText}`
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
-        );
+    addMessage("✨ I've started your voting journey above. Follow the steps!", "bot");
+}
 
-        const data = await response.json();
-        const botReply = data.candidates[0].content.parts[0].text;
+function handleScenario(type) {
+    let reply = "";
 
-        // Remove typing
-        const chatBox = document.getElementById("chatBox");
-        chatBox.removeChild(chatBox.lastChild);
-
-        addMessage(botReply, "bot");
-
-    } catch (error) {
-        addMessage("Error connecting to AI.", "bot");
+    if (type === "first") {
+        reply = "🎉 First-time voter? Just follow: Register → Get ID → Check booth → Vote!";
+    } else if (type === "lost") {
+        reply = "🔁 Lost your voter ID? You can use alternative ID or download e-EPIC.";
+    } else if (type === "booth") {
+        reply = "📍 Use your voter ID on official portals to find your polling booth.";
     }
+
+    addMessage(reply, "bot");
+}
+
+function askAI() {
+    const input = document.getElementById("userInput");
+    const text = input.value.toLowerCase();
+
+    if (!text) return;
+
+    addMessage(text, "user");
+    input.value = "";
+
+    let reply = "";
+
+    if (text.includes("register")) {
+        reply = "You can register online using Form 6 on the Election Commission website.";
+    } else if (text.includes("voter id")) {
+        reply = "Apply for a voter ID or download your e-EPIC online.";
+    } else if (text.includes("booth")) {
+        reply = "Check your polling booth using your voter ID.";
+    } else if (text.includes("vote")) {
+        reply = "Visit your polling booth on election day and cast your vote.";
+    } else {
+        reply = "Try asking about registration, voter ID, or voting process.";
+    }
+
+    setTimeout(() => {
+        addMessage(reply, "bot");
+    }, 600);
 }
