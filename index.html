@@ -12,34 +12,38 @@
 
         <h1>🗳️ Election Guide AI</h1>
         <p class="subtitle">
-            Not sure how voting works? This AI guides you step-by-step — like a friend who’s done it before.
+            Not sure how voting works? This guides you step-by-step — like someone who’s done it before.
         </p>
 
+        <!-- START JOURNEY -->
         <button class="start-btn" onclick="startJourney()">✨ Start My Voting Journey</button>
 
-        <!-- Journey Section -->
         <div id="journeyBox" class="card hidden">
             <h2>📌 Your Voting Journey</h2>
             <div id="journeySteps"></div>
         </div>
 
-        <!-- Scenarios -->
+        <!-- DECISION ENGINE -->
         <div class="card">
-            <h2>⚡ Common Situations</h2>
+            <h2>🧠 Smart Election Assistant</h2>
+            <p>Select your situation:</p>
+
             <div class="quick-buttons">
-                <button onclick="handleScenario('first')">First Time Voter</button>
-                <button onclick="handleScenario('lost')">Lost Voter ID</button>
-                <button onclick="handleScenario('booth')">Find Booth</button>
+                <button onclick="decision('not_registered')">Not Registered</button>
+                <button onclick="decision('no_id')">No Voter ID</button>
+                <button onclick="decision('lost_id')">Lost ID</button>
+                <button onclick="decision('booth')">Find Booth</button>
+                <button onclick="decision('vote')">Ready to Vote</button>
             </div>
         </div>
 
-        <!-- Chat -->
+        <!-- CHAT -->
         <div class="card">
             <h2>💬 Ask Election AI</h2>
             <div id="chatBox" class="chat-box"></div>
 
             <div class="input-area">
-                <input type="text" id="userInput" placeholder="Ask anything about elections...">
+                <input type="text" id="userInput" placeholder="Ask anything..." aria-label="Ask about elections">
                 <button onclick="askAI()">Send</button>
             </div>
         </div>

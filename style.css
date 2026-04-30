@@ -17,10 +17,10 @@ h1 {
 
 .subtitle {
     color: #ddd;
-    margin-bottom: 10px;
 }
 
 .start-btn {
+    margin-top: 10px;
     padding: 12px 20px;
     background: #ff9800;
     border: none;
@@ -28,7 +28,6 @@ h1 {
     color: white;
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 20px;
 }
 
 .card {
@@ -43,7 +42,6 @@ h1 {
     display: none;
 }
 
-/* Journey */
 #journeySteps {
     display: grid;
     gap: 10px;
@@ -56,9 +54,9 @@ h1 {
     text-align: left;
 }
 
-/* Buttons */
 .quick-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 }
@@ -72,7 +70,7 @@ h1 {
     cursor: pointer;
 }
 
-/* Chat */
+/* CHAT */
 .chat-box {
     height: 300px;
     overflow-y: auto;

@@ -1,11 +1,4 @@
-const steps = [
-    "🧾 Step 1: Register as a voter on the official portal.",
-    "🪪 Step 2: Apply and receive your voter ID.",
-    "📍 Step 3: Check your polling booth location.",
-    "🗳️ Step 4: Visit the booth and cast your vote.",
-    "📊 Step 5: Votes are counted and results declared."
-];
-
+// -------- CHAT SYSTEM --------
 function addMessage(text, sender) {
     const chatBox = document.getElementById("chatBox");
     const msg = document.createElement("div");
@@ -18,8 +11,17 @@ function addMessage(text, sender) {
 }
 
 window.onload = function () {
-    addMessage("👋 Hi! I’ll help you understand the election process step-by-step.", "bot");
+    addMessage("👋 Hi! I’ll guide you through the election process. Try the smart assistant above.", "bot");
 };
+
+// -------- JOURNEY --------
+const steps = [
+    "🧾 Register as a voter (Form 6)",
+    "🪪 Get your voter ID",
+    "📍 Find your polling booth",
+    "🗳️ Visit booth and vote",
+    "📊 Votes are counted"
+];
 
 function startJourney() {
     const box = document.getElementById("journeyBox");
@@ -28,32 +30,77 @@ function startJourney() {
     box.classList.remove("hidden");
     container.innerHTML = "";
 
-    steps.forEach((step, index) => {
+    steps.forEach((step, i) => {
         setTimeout(() => {
             const div = document.createElement("div");
             div.className = "step";
             div.innerText = step;
             container.appendChild(div);
-        }, index * 700);
+        }, i * 600);
     });
 
-    addMessage("✨ I've started your voting journey above. Follow the steps!", "bot");
+    addMessage("✨ Your step-by-step journey is shown above.", "bot");
 }
 
-function handleScenario(type) {
-    let reply = "";
+// -------- DECISION ENGINE --------
+function decision(type) {
+    let flow = [];
 
-    if (type === "first") {
-        reply = "🎉 First-time voter? Just follow: Register → Get ID → Check booth → Vote!";
-    } else if (type === "lost") {
-        reply = "🔁 Lost your voter ID? You can use alternative ID or download e-EPIC.";
-    } else if (type === "booth") {
-        reply = "📍 Use your voter ID on official portals to find your polling booth.";
+    if (type === "not_registered") {
+        flow = [
+            "🧾 Go to registration portal",
+            "🔗 https://voterportal.eci.gov.in/",
+            "📄 Fill Form 6",
+            "📌 Submit documents",
+            "⏳ Wait for approval"
+        ];
     }
 
-    addMessage(reply, "bot");
+    else if (type === "no_id") {
+        flow = [
+            "🪪 Apply for voter ID",
+            "🔗 https://voterportal.eci.gov.in/",
+            "📥 Download e-EPIC"
+        ];
+    }
+
+    else if (type === "lost_id") {
+        flow = [
+            "🔁 Download e-EPIC",
+            "🔗 https://voterportal.eci.gov.in/",
+            "🆔 Carry alternate ID"
+        ];
+    }
+
+    else if (type === "booth") {
+        flow = [
+            "📍 Find your polling booth",
+            "🔗 https://electoralsearch.eci.gov.in/",
+            "🗺️ Opening map..."
+        ];
+        openMap();
+    }
+
+    else if (type === "vote") {
+        flow = [
+            "🗳️ Carry valid ID",
+            "📍 Visit assigned booth",
+            "✅ Follow EVM process",
+            "🎉 Vote completed"
+        ];
+    }
+
+    flow.forEach((step, i) => {
+        setTimeout(() => addMessage(step, "bot"), i * 500);
+    });
 }
 
+// -------- GOOGLE MAP --------
+function openMap() {
+    window.open("https://www.google.com/maps/search/polling+booth+near+me");
+}
+
+// -------- CHAT LOGIC --------
 function askAI() {
     const input = document.getElementById("userInput");
     const text = input.value.toLowerCase();
@@ -66,18 +113,20 @@ function askAI() {
     let reply = "";
 
     if (text.includes("register")) {
-        reply = "You can register online using Form 6 on the Election Commission website.";
-    } else if (text.includes("voter id")) {
-        reply = "Apply for a voter ID or download your e-EPIC online.";
-    } else if (text.includes("booth")) {
-        reply = "Check your polling booth using your voter ID.";
-    } else if (text.includes("vote")) {
-        reply = "Visit your polling booth on election day and cast your vote.";
-    } else {
-        reply = "Try asking about registration, voter ID, or voting process.";
+        reply = "🧾 Register here: https://voterportal.eci.gov.in/";
+    }
+    else if (text.includes("voter id")) {
+        reply = "🪪 Apply/download here: https://voterportal.eci.gov.in/";
+    }
+    else if (text.includes("booth")) {
+        reply = "📍 Find booth: https://electoralsearch.eci.gov.in/";
+    }
+    else if (text.includes("documents")) {
+        reply = "🆔 Use Aadhaar, PAN, Passport or other valid ID.";
+    }
+    else {
+        reply = "Use the Smart Assistant above for step-by-step help.";
     }
 
-    setTimeout(() => {
-        addMessage(reply, "bot");
-    }, 600);
+    setTimeout(() => addMessage(reply, "bot"), 500);
 }
