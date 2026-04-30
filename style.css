@@ -1,58 +1,154 @@
-body {
+/* Reset & Base Styles */
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    padding: 30px;
-    text-align: center;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    color: white;
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gradient-text {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00E5FF, #B026FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    color: #ddd;
+    color: #a0a0a0;
+    font-size: 1rem;
 }
 
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.options button {
-    margin: 10px;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 10px;
-    background: #667eea;
-    color: white;
-    cursor: pointer;
-}
-
-.hidden {
-    display: none;
-}
-
-/* PROGRESS BAR */
-.progress-container {
+/* Layout */
+.app-container {
     width: 100%;
-    background: #ddd;
-    border-radius: 10px;
-    margin-top: 20px;
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-#progressBar {
-    height: 10px;
-    width: 0%;
-    background: #4caf50;
-    border-radius: 10px;
-    transition: 0.4s;
+/* Header */
+.hero-section {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Chat Container */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.chat-window {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+/* Messages */
+.message {
+    max-width: 80%;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.ai-message {
+    background-color: rgba(176, 38, 255, 0.1);
+    border-left: 4px solid #B026FF;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: rgba(0, 229, 255, 0.1);
+    border-right: 4px solid #00E5FF;
+    align-self: flex-end;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.action-chip {
+    background-color: transparent;
+    border: 1px solid #00E5FF;
+    color: #00E5FF;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-chip:hover {
+    background-color: #00E5FF;
+    color: #0d0d0d;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    gap: 1rem;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #B026FF;
+}
+
+#send-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #00E5FF, #B026FF);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#send-btn:hover {
+    opacity: 0.8;
 }
