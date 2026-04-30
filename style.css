@@ -13,6 +13,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    /* Prevents body scrolling */
 }
 
 /* Typography */
@@ -38,17 +40,19 @@ h3 {
 /* Layout */
 .app-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #0d0d0d;
 }
 
 /* Header */
 .hero-section {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
 }
 
 /* Chat Container */
@@ -56,7 +60,7 @@ h3 {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     overflow: hidden;
 }
 
@@ -65,50 +69,70 @@ h3 {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
     padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #B026FF transparent;
+}
+
+.chat-window::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #B026FF;
+    border-radius: 10px;
 }
 
 /* Messages */
 .message {
-    max-width: 80%;
-    padding: 1rem 1.5rem;
+    max-width: 85%;
+    padding: 1rem 1.2rem;
     border-radius: 12px;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.message p {
+    margin-bottom: 0.5rem;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
 }
 
 .ai-message {
-    background-color: rgba(176, 38, 255, 0.1);
-    border-left: 4px solid #B026FF;
+    background-color: rgba(176, 38, 255, 0.05);
+    border-left: 3px solid #B026FF;
     align-self: flex-start;
 }
 
 .user-message {
-    background-color: rgba(0, 229, 255, 0.1);
-    border-right: 4px solid #00E5FF;
+    background-color: rgba(0, 229, 255, 0.05);
+    border-right: 3px solid #00E5FF;
     align-self: flex-end;
 }
 
 /* Quick Actions */
 .quick-actions {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .action-chip {
     background-color: transparent;
-    border: 1px solid #00E5FF;
+    border: 1px solid rgba(0, 229, 255, 0.5);
     color: #00E5FF;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .action-chip:hover {
@@ -120,17 +144,21 @@ h3 {
 .input-area {
     display: flex;
     gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 input[type="text"] {
     flex: 1;
-    padding: 1rem;
+    padding: 1rem 1.2rem;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
     color: #fff;
     font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
     outline: none;
+    transition: border-color 0.3s ease;
 }
 
 input[type="text"]:focus {
@@ -138,7 +166,7 @@ input[type="text"]:focus {
 }
 
 #send-btn {
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     border: none;
     border-radius: 8px;
     background: linear-gradient(90deg, #00E5FF, #B026FF);
@@ -146,9 +174,40 @@ input[type="text"]:focus {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
 #send-btn:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+}
+
+/* Custom Google Translate Widget Styling */
+.translate-container {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+    background-color: #1a1a1a;
+    color: #00E5FF;
+    border: 1px solid rgba(0, 229, 255, 0.5);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget span {
+    display: none !important;
 }
