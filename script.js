@@ -1,6 +1,5 @@
 // --- API CONFIGURATION ---
-// IMPORTANT: Paste your Gemini key here for testing. Remove before pushing to public GitHub.
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+const GEMINI_API_KEY = "AIzaSyBsM3ECW7Mh5ixuRkcNy6ZOn4IuCQFcl2o";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // --- DOM ELEMENTS ---
@@ -12,7 +11,7 @@ const sendBtn = document.getElementById('send-btn');
 let conversationHistory = [
     {
         role: "user",
-        parts: [{ text: "System Instructions: You are Election Guide AI, a highly intelligent assistant helping users understand the Indian election process. Speak strictly in an authentic, student-led voice. Do NOT use corporate jargon, buzzwords, or typical AI phrasing. Keep your tone direct, helpful, and highly actionable. \n\nCRITICAL INSTRUCTION FOR MAPS: If the user asks where to vote or asks to find a booth AND provides a location (like a city, state, or pincode), you MUST include exactly this tag anywhere in your text response: [MAP_SEARCH: the location they provided]. Example: 'I can help you find that. [MAP_SEARCH: Kanpur]. Make sure you carry your Voter ID.' Keep the rest of your advice accurate to the Election Commission of India guidelines." }]
+        parts: [{ text: "System Instructions: You are Election Guide AI, a highly intelligent assistant helping users understand the Indian election process. Speak strictly in an authentic, student-led voice. Do NOT use corporate jargon or typical AI phrasing. Keep your tone direct, helpful, and highly actionable. \n\nCRITICAL INSTRUCTION FOR MAPS: If the user asks where to vote or asks to find a booth AND provides a location, you MUST include exactly this tag anywhere in your text response: [MAP_SEARCH: the location they provided]. Example: 'I can help you find that. [MAP_SEARCH: Kanpur]. Make sure you carry your Voter ID.'" }]
     },
     {
         role: "model",
@@ -84,7 +83,6 @@ function replaceMessage(id, newText, className) {
     let formattedText = newText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     formattedText = formattedText.replace(/\n/g, '<br>');
 
-    // Intercept Map Tag and inject a smart button instead of an iframe
     const mapRegex = /\[MAP_SEARCH:\s*(.*?)\]/g;
     formattedText = formattedText.replace(mapRegex, (match, location) => {
         return renderMapButton(location);
@@ -95,7 +93,6 @@ function replaceMessage(id, newText, className) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// No API key needed for this! It uses Google Maps Search URLs.
 function renderMapButton(location) {
     const query = encodeURIComponent(location + " polling booth");
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;

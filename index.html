@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Election Guide AI</title>
-    <!-- Premium Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700&display=swap"
         rel="stylesheet">
@@ -14,24 +13,20 @@
 
 <body>
     <main class="app-container">
-        <!-- Header Section -->
         <header class="hero-section">
             <div id="google_translate_element" class="translate-container"></div>
             <h1 class="gradient-text">Election Guide AI</h1>
             <p class="subtitle">Your intelligent, step-by-step voting assistant.</p>
         </header>
 
-        <!-- Chat Interface -->
         <section class="chat-container">
             <div class="chat-window" id="chat-window">
-                <!-- AI Welcome Message -->
                 <div class="message ai-message">
                     <p>Hey. I'm here to help you navigate the election process step-by-step. Are you a first-time voter,
                         looking for your polling booth, or do you have a specific question?</p>
                 </div>
             </div>
 
-            <!-- Quick Action Chips -->
             <div class="quick-actions">
                 <button class="action-chip"
                     onclick="sendQuickReply('I am a First Time Voter. What are the exact steps?')">First Time
@@ -42,7 +37,6 @@
                     Booth</button>
             </div>
 
-            <!-- Input Area -->
             <div class="input-area">
                 <input type="text" id="user-input" placeholder="Ask anything about elections..." autocomplete="off">
                 <button id="send-btn">Send</button>
@@ -50,7 +44,6 @@
         </section>
     </main>
 
-    <!-- Google Translate Script -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
@@ -58,8 +51,6 @@
     </script>
     <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <!-- Main App Script -->
     <script src="script.js"></script>
 </body>
 
