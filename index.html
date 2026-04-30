@@ -10,59 +10,26 @@
 
     <div class="container">
 
-        <h1>🗳️ Election Guide AI</h1>
-        <p class="subtitle">
-            Not sure how voting works? This guides you step-by-step — like someone who’s done it before.
-        </p>
+        <h1>🗳️ Election Guide</h1>
+        <p class="subtitle">Let’s figure out where you are in the voting process</p>
 
-        <!-- START JOURNEY -->
-        <button class="start-btn" onclick="startJourney()">✨ Start My Voting Journey</button>
-
-        <div id="journeyBox" class="card hidden">
-            <h2>📌 Your Voting Journey</h2>
-            <div id="journeySteps"></div>
+        <!-- PROGRESS BAR -->
+        <div class="progress-container">
+            <div id="progressBar"></div>
         </div>
 
-        <!-- DECISION ENGINE -->
-        <div class="card">
-            <h2>🧠 Smart Election Assistant</h2>
-            <p>Select your situation:</p>
+        <!-- STEP WIZARD -->
+        <div class="card" id="wizard">
+            <h2 id="question">Are you registered as a voter?</h2>
 
-            <div class="quick-buttons">
-                <button onclick="decision('not_registered')">Not Registered</button>
-                <button onclick="decision('no_id')">No Voter ID</button>
-                <button onclick="decision('lost_id')">Lost ID</button>
-                <button onclick="decision('booth')">Find Booth</button>
-                <button onclick="decision('vote')">Ready to Vote</button>
+            <div class="options">
+                <button onclick="answer('yes')">Yes</button>
+                <button onclick="answer('no')">No</button>
             </div>
         </div>
 
-        <!-- READINESS CHECK -->
-        <div class="card">
-            <h2>🎯 Am I Ready to Vote?</h2>
-            <p>Mark your status:</p>
-
-            <div class="quick-buttons">
-                <button onclick="setStatus('registered')">Registered</button>
-                <button onclick="setStatus('has_id')">Have Voter ID</button>
-                <button onclick="setStatus('know_booth')">Know Booth</button>
-            </div>
-
-            <button class="start-btn" onclick="checkReadiness()">Check My Readiness</button>
-
-            <div id="resultBox" class="hidden"></div>
-        </div>
-
-        <!-- CHAT -->
-        <div class="card">
-            <h2>💬 Ask Election AI</h2>
-            <div id="chatBox" class="chat-box"></div>
-
-            <div class="input-area">
-                <input type="text" id="userInput" placeholder="Ask anything..." aria-label="Ask about elections">
-                <button onclick="askAI()">Send</button>
-            </div>
-        </div>
+        <!-- RESULT -->
+        <div id="resultCard" class="card hidden"></div>
 
     </div>
 
