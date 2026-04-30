@@ -37,6 +37,22 @@
             </div>
         </div>
 
+        <!-- READINESS CHECK -->
+        <div class="card">
+            <h2>🎯 Am I Ready to Vote?</h2>
+            <p>Mark your status:</p>
+
+            <div class="quick-buttons">
+                <button onclick="setStatus('registered')">Registered</button>
+                <button onclick="setStatus('has_id')">Have Voter ID</button>
+                <button onclick="setStatus('know_booth')">Know Booth</button>
+            </div>
+
+            <button class="start-btn" onclick="checkReadiness()">Check My Readiness</button>
+
+            <div id="resultBox" class="hidden"></div>
+        </div>
+
         <!-- CHAT -->
         <div class="card">
             <h2>💬 Ask Election AI</h2>
